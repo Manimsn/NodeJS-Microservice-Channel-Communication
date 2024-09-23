@@ -1,0 +1,12 @@
+# Ignore all node_modules directories in the project
+node_modules/
+
+# Ignore other common files or folders if needed
+.env
+*.log
+.DS_Store
+/build
+/dist
+coverage/
+
+# You can also ignore other service-specific folders or files
