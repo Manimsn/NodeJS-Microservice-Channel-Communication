@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const axios = require("axios");
 
 const { APP_SECRET } = require("../config");
 
@@ -50,3 +49,6 @@ module.exports.FormateData = (data) => {
     throw new Error("Data Not found!");
   }
 };
+
+
+// Message Broker using RabbitMQ
