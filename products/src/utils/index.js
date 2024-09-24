@@ -66,5 +66,12 @@ module.exports.CreaateChannel = async () => {
 }
 
 // Publish Messages
+module.exports.PublishMessage = async (channel, binding_key, message) => {
+  try {    
+    await channel.publish(EXCHANGE_NAME, binding_key, Buffer.from(message))
+  } catch (err) {
+    throw err;
+  }
+}
 
 // Subscribe Messages
