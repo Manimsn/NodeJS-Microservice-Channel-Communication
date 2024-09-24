@@ -75,3 +75,18 @@ module.exports.PublishMessage = async (channel, binding_key, message) => {
 }
 
 // Subscribe Messages
+
+module.exports.SubscribeMessage = async (channel, service, binding_key) => {
+  try {    
+    const appQueue = await channel.assertQueue(QUEUE_NAME);
+    channel.bindQueue(appQueue.queue, EXCHANGE_NAME, binding_key)
+
+    channel.consume(appQueue.queue, data => {
+      console.log("received data")
+      console.log(data.content.toString());
+      channel.ack(data)
+    })
+  } catch (err) {
+    throw err;
+  }
+}
