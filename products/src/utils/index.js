@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const amqplib = require("amqplib");
 
 const { APP_SECRET } = require("../config");
 
@@ -51,4 +52,19 @@ module.exports.FormateData = (data) => {
 };
 
 
-// Message Broker using RabbitMQ
+// ----------------------------- Message Broker using RabbitMQ --------------------
+// Create a channel
+module.exports.CreaateChannel = async () => {
+  try {
+    const connection = await amqplib.connect(MESSAGE_BROKER_URL);
+    const channel = await connection.createChannel();
+    await channel.assertExchange(EXCHANGE_NAME, 'direct', false)
+    return channel
+  } catch (err) {
+    throw err;
+  }
+}
+
+// Publish Messages
+
+// Subscribe Messages
