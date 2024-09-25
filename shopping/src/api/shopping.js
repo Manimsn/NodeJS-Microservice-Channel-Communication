@@ -1,5 +1,6 @@
+const { CUSTOMER_BINDING_KEY } = require("../config");
 const ShoppingService = require("../services/shopping-service");
-const {  SubscribeMessage } = require("../utils");
+const {  SubscribeMessage, PublishMessage } = require("../utils");
 const UserAuth = require('./middlewares/auth');
 
 module.exports = (app, channel) => {
@@ -19,6 +20,7 @@ module.exports = (app, channel) => {
             const payload = await service.GetOrderPayload(_id, data, `CREATE_ORDER`)
 
             // PublishCustomerEvent(payload)
+            PublishMessage(channel, CUSTOMER_BINDING_KEY, JSON.stringify(payload))
 
             return res.status(200).json(data);
 
