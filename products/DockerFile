@@ -1,9 +1,12 @@
+# Dockerfile
 FROM node
+# or the appropriate Node version you're using
 
 WORKDIR /app/products
 
 COPY package.json .
 
+# Install dependencies inside the container
 RUN npm install
 
 COPY . .
