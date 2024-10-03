@@ -6,7 +6,7 @@ const { CreaateChannel } = require('./utils');
 
 const StartServer = async() => {
 
-    const app = express()
+    const app = express();
     
     await databaseConnection();
     
