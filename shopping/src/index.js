@@ -8,7 +8,7 @@ const StartServer = async() => {
 
     const app = express();
     
-    await databaseConnection();
+    await databaseConnection()
     
     const channel = await CreaateChannel()
     await expressApp(app,channel);
