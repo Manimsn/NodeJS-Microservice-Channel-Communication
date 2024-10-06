@@ -11,7 +11,7 @@ module.exports = async (app,channel) => {
     app.use(cors());
     app.use(express.static(__dirname + '/public'));
 
-    // appEvents(app)
+    // appEvents(app);
 
     //api
     shopping(app, channel);
